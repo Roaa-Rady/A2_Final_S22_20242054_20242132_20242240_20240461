@@ -21,10 +21,14 @@ public:
     double getLength() const;
     void skipForward(double seconds);
     void skipBackward(double seconds);
+    void mute();
+    void unmute();
 private:
     juce::AudioFormatManager formatManager;
     std::unique_ptr<juce::AudioFormatReaderSource> readerSource;
     juce::AudioTransportSource transportSource;
+    float previousGain = 0.5f;
+    bool isMuted = false;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(PlayerAudio)
 };
