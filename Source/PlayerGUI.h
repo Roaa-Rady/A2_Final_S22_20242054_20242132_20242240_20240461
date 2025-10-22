@@ -33,6 +33,7 @@ private:
     juce::TextButton restartButton{ "Restart" };
     juce::TextButton stopButton{ "Stop" };
     juce::TextButton playButton{ "Play" };
+    juce::TextButton loopButton{ "Loop" };
     juce::TextButton muteButton{ "Mute" };
     juce::TextButton unmuteButton{ "Unmute" };
     juce::Label metadataLabel;
