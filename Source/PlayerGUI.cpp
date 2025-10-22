@@ -12,7 +12,7 @@
 
 PlayerGUI::PlayerGUI()
 {
-    for (auto* btn : { &loadButton, &restartButton, &stopButton, &playButton , &forwardButton , &backwardButton, &muteButton, &unmuteButton })
+    for (auto* btn : { &loadButton, &restartButton, &stopButton, &playButton , &forwardButton , &backwardButton })
     {
         addAndMakeVisible(btn); 
         btn->addListener(this);
