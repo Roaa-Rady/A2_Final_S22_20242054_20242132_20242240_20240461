@@ -29,6 +29,7 @@ private:
     juce::AudioFormatManager formatManager;
     std::unique_ptr<juce::AudioFormatReaderSource> readerSource;
     juce::AudioTransportSource transportSource;
+    bool islooping = false;
     float previousGain = 0.5f;
     bool isMuted = false;
 
