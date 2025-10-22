@@ -87,5 +87,25 @@ double PlayerAudio::getLength() const
 {
     return transportSource.getLengthInSeconds();
 }
-
+void PlayerAudio::mute()
+{
+    if (!isMuted)
+    {
+        previousGain = transportSource.getGain();
+        transportSource.setGain(0.0f);
+        isMuted = true;
+    }
+    
+  
+}
+void PlayerAudio::unmute()
+{
+    if (isMuted)
+    {
+        transportSource.setGain(previousGain);
+        isMuted = false;
+    }
+    
+   
+}
 
