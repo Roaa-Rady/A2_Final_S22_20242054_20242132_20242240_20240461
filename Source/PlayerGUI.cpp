@@ -145,7 +145,7 @@ void PlayerGUI::buttonClicked(juce::Button* button)
     {
     playerAudio.mute();
     }
-   else if (button == &unmuteButton)
+    else if (button == &unmuteButton)
     {
     playerAudio.unmute();
     }
