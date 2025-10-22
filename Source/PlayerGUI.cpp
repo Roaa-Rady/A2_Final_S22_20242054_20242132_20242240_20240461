@@ -141,6 +141,14 @@ void PlayerGUI::buttonClicked(juce::Button* button)
     {
         playerAudio.play();
     }
+    else if (button == &muteButton)
+    {
+    playerAudio.mute();
+    }
+   else if (button == &unmuteButton)
+    {
+    playerAudio.unmute();
+    }
     else if (button == &forwardButton)
     {
         playerAudio.skipForward(10.0); 
