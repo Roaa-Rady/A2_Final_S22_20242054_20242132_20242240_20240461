@@ -53,24 +53,36 @@ void PlayerGUI::sliderValueChanged(juce::Slider* slider)
 
 void PlayerGUI::resized()
 {
-    int labelHeight = 4 * (metadataLabel.getFont().getHeight() + 10);
-    int margin = 20;
-    int buttonHeight = 40;
-    int buttonWidth = (getWidth() - margin * 2 - 30) / 4; 
-    int y = 10 + labelHeight;
+     int margin = 20;
+ int buttonHeight = 40;
+ int labelHeight = static_cast<int>(4 * (metadataLabel.getFont().getHeight() + 10));
+ int buttonSpace = 10;
+ int rowButtons = 5;
+ int numButtons = 7; 
+ int buttonWidth = 80;
+ 
 
-    metadataLabel.setBounds(margin, 10, getWidth() - 2 * margin, labelHeight);
+int y = 10 + labelHeight;
+int x = margin;
 
-    loadButton.setBounds(margin, y, buttonWidth, buttonHeight);
-    restartButton.setBounds(margin + buttonWidth + 10, y, buttonWidth, buttonHeight);
-    stopButton.setBounds(margin + 2 * (buttonWidth + 10), y, buttonWidth, buttonHeight);
-    playButton.setBounds(margin + 3 * (buttonWidth + 10), y, buttonWidth, buttonHeight);
+juce::Component* buttons[] = {&loadButton,&restartButton,&stopButton,&playButton,&loopButton,&muteButton,&unmuteButton};
 
-    int fbY = y + buttonHeight + 15;
-    backwardButton.setBounds(margin + 110, fbY, buttonWidth, buttonHeight);
-    forwardButton.setBounds(margin + buttonWidth + 120, fbY, buttonWidth, buttonHeight);
 
-    volumeSlider.setBounds(margin, fbY + buttonHeight + 20, getWidth() - 2 * margin, 30);
+for (int i = 0; i < numButtons; i++)
+{
+    int row = i / rowButtons;   
+    int col = i % rowButtons;   
+    int x = margin + col * (buttonWidth + buttonSpace);
+    int newY = y + row * (buttonHeight + 10);
+
+    buttons[i]->setBounds(x, newY, buttonWidth, buttonHeight);
+}
+
+int totalRows = (numButtons + rowButtons - 1) / rowButtons;
+
+int nextY = y + totalRows * (buttonHeight + 20);
+volumeSlider.setBounds(margin, nextY, getWidth() - 2 * margin, 30);
+metadataLabel.setBounds(margin, 10, getWidth() - 2 * margin, labelHeight);
 }
 
 void PlayerGUI::buttonClicked(juce::Button* button)
@@ -137,7 +149,18 @@ void PlayerGUI::buttonClicked(juce::Button* button)
     {
         playerAudio.skipBackward(10.0); 
     }
+      else if (button == &loopButton)
+    {
+        loopOn = !loopOn;
+        if (loopOn)
+            loopButton.setColour(juce::TextButton::buttonColourId, juce::Colours::green);
+        else
+            loopButton.setColour(juce::TextButton::buttonColourId, juce::Colours::grey);
+        playerAudio.setLooping(loopOn);
+    }
+
 }
+
 
 
 
