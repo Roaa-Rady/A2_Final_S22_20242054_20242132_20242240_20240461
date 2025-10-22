@@ -19,6 +19,8 @@ public:
     void setPosition(double pos);
     double getPosition() const;
     double getLength() const;
+    void setLooping(bool shouldLoop);
+    bool isLooping() const;
     void skipForward(double seconds);
     void skipBackward(double seconds);
     void mute();
