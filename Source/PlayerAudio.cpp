@@ -108,4 +108,37 @@ void PlayerAudio::unmute()
     
    
 }
+void PlayerAudio::setGain(float gain)
+{
+    transportSource.setGain(gain);
+}
+
+void PlayerAudio::setPosition(double pos)
+{
+    transportSource.setPosition(pos);
+}
+
+double PlayerAudio::getPosition() const
+{
+    return transportSource.getCurrentPosition();
+}
+
+double PlayerAudio::getLength() const
+{
+    return transportSource.getLengthInSeconds();
+}
+
+void PlayerAudio::setLooping(bool shouldLoop)
+{
+    islooping = shouldLoop;
+    if (readerSource != nullptr)
+    {
+        readerSource->setLooping(shouldLoop);   
+    }
+}
+bool PlayerAudio::isLooping() const
+{
+    return islooping;
+}
+
 
