@@ -41,7 +41,7 @@ private:
     juce::TextButton forwardButton{ "10s >>" };
     juce::TextButton backwardButton{ "<< 10s" };
     std::unique_ptr<juce::FileChooser> fileChooser;
-
+    bool loopOn = false;
     // Event handlers 
     void buttonClicked(juce::Button* button) override;
     void sliderValueChanged(juce::Slider* slider) override;
