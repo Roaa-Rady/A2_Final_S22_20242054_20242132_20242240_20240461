@@ -27,7 +27,7 @@ PlayerGUI::PlayerGUI()
     progressSlider.setTextBoxStyle(juce::Slider::NoTextBox, false, 0, 0); 
     progressSlider.setEnabled(false); 
     addAndMakeVisible(progressSlider);
-    positionSlider.addListener(this);//task2 
+    progressSlider.addListener(this);//task2 
     addAndMakeVisible(timeLabel);
     addAndMakeVisible(metadataLabel);
     addAndMakeVisible(setAButton);
