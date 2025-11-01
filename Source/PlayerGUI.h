@@ -19,7 +19,7 @@ class PlayerGUI : public juce::Component,
 public:
     PlayerGUI();
     ~PlayerGUI() override;
-
+    PlayerAudio playerAudio; 
     void prepareToPlay(int samplesPerBlockExpected, double sampleRate);
     void getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferToFill);
     void releaseResources();
@@ -28,7 +28,7 @@ public:
     void resized() override;
 
 private:
-    PlayerAudio playerAudio; 
+    
     juce::TextButton loadButton{ "Load Files" };
     juce::TextButton restartButton{ "Restart" };
     juce::TextButton stopButton{ "Stop" };
