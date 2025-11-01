@@ -14,7 +14,7 @@
 
 class PlayerGUI : public juce::Component,
     public juce::Button::Listener,
-    public juce::Slider::Listener
+    public juce::Slider::Listener,
     public juce::Timer 
 {
 public:
