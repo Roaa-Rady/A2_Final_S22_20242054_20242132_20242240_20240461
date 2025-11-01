@@ -40,8 +40,12 @@ private:
     juce::Slider volumeSlider;
     juce::TextButton forwardButton{ "10s >>" };
     juce::TextButton backwardButton{ "<< 10s" };
+    juce::TextButton setAButton{ "Set A" };
+    juce::TextButton setBButton{ "Set B" };
+    juce::TextButton loopABButton{ "Loop A-B" };
     std::unique_ptr<juce::FileChooser> fileChooser;
     bool loopOn = false;
+    bool isLoopingAB = false;
     // Event handlers 
     void buttonClicked(juce::Button* button) override;
     void sliderValueChanged(juce::Slider* slider) override;
