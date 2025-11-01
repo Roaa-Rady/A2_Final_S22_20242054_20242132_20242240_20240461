@@ -40,6 +40,7 @@ private:
     juce::Label metadataLabel;
     juce::Slider volumeSlider;
     juce::Slider progressSlider;
+    juce::Label timeLabel;
     juce::TextButton forwardButton{ "10s >>" };
     juce::TextButton backwardButton{ "<< 10s" };
     juce::TextButton setAButton{ "Set A" };
