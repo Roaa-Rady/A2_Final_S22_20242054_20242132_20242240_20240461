@@ -27,15 +27,15 @@ PlayerGUI::PlayerGUI()
     progressSlider.setTextBoxStyle(juce::Slider::NoTextBox, false, 0, 0); 
     progressSlider.setEnabled(false); 
     addAndMakeVisible(progressSlider);
-    progressSlider.addListener(this);//task2 
+    progressSlider.addListener(this); 
     addAndMakeVisible(timeLabel);
     addAndMakeVisible(metadataLabel);
     addAndMakeVisible(setAButton);
     addAndMakeVisible(setBButton);
     addAndMakeVisible(loopABButton);
 
-  timeLabel.setColour(juce::Label::textColourId, juce::Colours::white);//task2
-timeLabel.setJustificationType(juce::Justification::centred);//task2
+    timeLabel.setColour(juce::Label::textColourId, juce::Colours::white);
+    timeLabel.setJustificationType(juce::Justification::centred);
     metadataLabel.setText("No file loaded", juce::dontSendNotification);
     metadataLabel.setColour(juce::Label::textColourId, juce::Colours::white);
     metadataLabel.setJustificationType(juce::Justification::centred);
@@ -207,20 +207,20 @@ void PlayerGUI::buttonClicked(juce::Button* button)
      playerAudio.setLoopPointA(playerAudio.getPosition());
  }
  else if (button == &setBButton)
- {
+  {
      playerAudio.setLoopPointB(playerAudio.getPosition());
- }
+  }
  else if (button == &loopABButton)
- {
+  {
      playerAudio.enableSegmentLoop(!playerAudio.getSegmentLooping());
      isLoopingAB = !isLoopingAB;
- }
+  }
 }
 
 
 void PlayerGUI::timerCallback()
 {
-    if (!positionSlider.isMouseButtonDown()){
+    if (!progressSlider.isMouseButtonDown()){
         progressSlider.setValue(playerAudio.getPosition() / playerAudio.getLength());
          progressSlider.setValue(value, juce::dontSendNotification);
     }
@@ -233,7 +233,7 @@ void PlayerGUI::timerCallback()
 
     timeLabel.setText(toTime(playerAudio.getPosition()) + " / " + toTime(playerAudio.getLength()), juce::dontSendNotification);
 }
-}
+
 
 void PlayerGUI::paint(juce::Graphics& g)
 {
