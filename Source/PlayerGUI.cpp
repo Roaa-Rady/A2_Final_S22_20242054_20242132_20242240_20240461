@@ -221,8 +221,7 @@ void PlayerGUI::buttonClicked(juce::Button* button)
 void PlayerGUI::timerCallback()
 {
     if (!progressSlider.isMouseButtonDown()){
-        progressSlider.setValue(playerAudio.getPosition() / playerAudio.getLength());
-         progressSlider.setValue(value, juce::dontSendNotification);
+        progressSlider.setValue(playerAudio.getPosition() / playerAudio.getLength(),juce::dontSendNotification);
     }
       auto toTime = [](double s)
         {
@@ -237,7 +236,7 @@ void PlayerGUI::timerCallback()
 
 void PlayerGUI::paint(juce::Graphics& g)
 {
-    g.fillAll(juce::Colours::silver);
+    g.fillAll(juce::Colours::darkgrey);
     g.setColour(juce::Colours::white);
     g.drawText("Audio Player", getLocalBounds(), juce::Justification::centredTop);
 }
