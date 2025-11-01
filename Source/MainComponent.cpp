@@ -40,7 +40,8 @@ void MainComponent::paint(juce::Graphics& g)
 
 void MainComponent::resized()
 {
-    player1->setBounds(20, 20, getWidth() - 40, 300);
+    player1->setBounds(0, 0, getWidth(), getHeight() / 2);
+    player2->setBounds(0, getHeight() / 2, getWidth(), getHeight() / 2);
 }
 
 
