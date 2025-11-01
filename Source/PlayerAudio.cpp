@@ -122,4 +122,31 @@ bool PlayerAudio::isLooping() const
     return islooping;
 }
 
+void PlayerAudio::setLoopPointA(double position)
+{
+    pointA = position;
+}
+
+void PlayerAudio::setLoopPointB(double position)
+{
+    pointB = position;
+}
+
+void PlayerAudio::enableSegmentLoop(bool shouldLoop)
+{
+    isSegmentLooping = shouldLoop;
+}
+
+void PlayerAudio::checkSegmentLoop()
+{
+    if (isSegmentLooping && pointA >= 0 && pointB > pointA)
+    {
+        double pos = transportSource.getCurrentPosition();
+        if (pos >= pointB)
+        {
+            transportSource.setPosition(pointA);
+        }
+    }
+}
+
 
