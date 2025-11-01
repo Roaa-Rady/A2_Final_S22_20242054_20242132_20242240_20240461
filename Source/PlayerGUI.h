@@ -15,6 +15,7 @@
 class PlayerGUI : public juce::Component,
     public juce::Button::Listener,
     public juce::Slider::Listener
+    public juce::Timer 
 {
 public:
     PlayerGUI();
@@ -38,6 +39,7 @@ private:
     juce::TextButton unmuteButton{ "Unmute" };
     juce::Label metadataLabel;
     juce::Slider volumeSlider;
+    juce::Slider progressSlider;
     juce::TextButton forwardButton{ "10s >>" };
     juce::TextButton backwardButton{ "<< 10s" };
     juce::TextButton setAButton{ "Set A" };
@@ -49,6 +51,7 @@ private:
     // Event handlers 
     void buttonClicked(juce::Button* button) override;
     void sliderValueChanged(juce::Slider* slider) override;
+    void timerCallback() override;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(PlayerGUI)
 };
