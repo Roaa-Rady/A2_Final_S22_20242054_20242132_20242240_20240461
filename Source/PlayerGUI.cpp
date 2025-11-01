@@ -23,6 +23,9 @@ PlayerGUI::PlayerGUI()
     volumeSlider.addListener(this);
     addAndMakeVisible(volumeSlider);
     addAndMakeVisible(metadataLabel);
+    addAndMakeVisible(setAButton);
+    addAndMakeVisible(setBButton);
+    addAndMakeVisible(loopABButton);
     metadataLabel.setText("No file loaded", juce::dontSendNotification);
     metadataLabel.setColour(juce::Label::textColourId, juce::Colours::white);
     metadataLabel.setJustificationType(juce::Justification::centred);
@@ -166,7 +169,19 @@ void PlayerGUI::buttonClicked(juce::Button* button)
             loopButton.setColour(juce::TextButton::buttonColourId, juce::Colours::grey);
         playerAudio.setLooping(loopOn);
     }
-
+ else if (button == &setAButton)
+ {
+     playerAudio.setLoopPointA(playerAudio.getPosition());
+ }
+ else if (button == &setBButton)
+ {
+     playerAudio.setLoopPointB(playerAudio.getPosition());
+ }
+ else if (button == &loopABButton)
+ {
+     playerAudio.enableSegmentLoop(!playerAudio.getSegmentLooping());
+     isLoopingAB = !isLoopingAB;
+ }
 }
 
 
