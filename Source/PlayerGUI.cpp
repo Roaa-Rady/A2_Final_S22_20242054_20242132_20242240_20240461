@@ -22,6 +22,11 @@ PlayerGUI::PlayerGUI()
     volumeSlider.setValue(0.5);
     volumeSlider.addListener(this);
     addAndMakeVisible(volumeSlider);
+    progressSlider.setRange(0.0, 1.0);  
+    progressSlider.setSliderStyle(juce::Slider::LinearHorizontal); 
+    progressSlider.setTextBoxStyle(juce::Slider::NoTextBox, false, 0, 0); 
+    progressSlider.setEnabled(false); 
+    addAndMakeVisible(progressSlider);
     addAndMakeVisible(metadataLabel);
     addAndMakeVisible(setAButton);
     addAndMakeVisible(setBButton);
@@ -29,6 +34,7 @@ PlayerGUI::PlayerGUI()
     metadataLabel.setText("No file loaded", juce::dontSendNotification);
     metadataLabel.setColour(juce::Label::textColourId, juce::Colours::white);
     metadataLabel.setJustificationType(juce::Justification::centred);
+    startTimer(200);
 }
 
 PlayerGUI::~PlayerGUI() {}
@@ -85,6 +91,7 @@ int totalRows = (numButtons + rowButtons - 1) / rowButtons;
 
 int nextY = y + totalRows * (buttonHeight + 20);
 volumeSlider.setBounds(margin, nextY, getWidth() - 2 * margin, 30);
+progressSlider.setBounds(margin, nextY + 40, getWidth() - 2 * margin, 20);
 metadataLabel.setBounds(margin, 10, getWidth() - 2 * margin, labelHeight);
 }
 
@@ -134,23 +141,33 @@ void PlayerGUI::buttonClicked(juce::Button* button)
     {
         playerAudio.setPosition(0.0);
         playerAudio.play();
+        playButton.setColour(juce::TextButton::buttonColourId, juce::Colours::green); 
+        stopButton.setColour(juce::TextButton::buttonColourId, juce::Colours::grey);
     }
     else if (button == &stopButton)
     {
         playerAudio.stop();
+        stopButton.setColour(juce::TextButton::buttonColourId, juce::Colours::red); 
+        playButton.setColour(juce::TextButton::buttonColourId, juce::Colours::grey);
         
     }
     else if (button == &playButton)
     {
         playerAudio.play();
+        playButton.setColour(juce::TextButton::buttonColourId, juce::Colours::green); 
+        stopButton.setColour(juce::TextButton::buttonColourId, juce::Colours::grey);
     }
     else if (button == &muteButton)
     {
-    playerAudio.mute();
+        playerAudio.mute();
+        muteButton.setColour(juce::TextButton::buttonColourId, juce::Colours::red); 
+        unmuteButton.setColour(juce::TextButton::buttonColourId, juce::Colours::grey);
     }
     else if (button == &unmuteButton)
     {
-    playerAudio.unmute();
+        playerAudio.unmute();
+        unmuteButton.setColour(juce::TextButton::buttonColourId, juce::Colours::green); 
+        muteButton.setColour(juce::TextButton::buttonColourId, juce::Colours::grey);
     }
     else if (button == &forwardButton)
     {
@@ -185,7 +202,11 @@ void PlayerGUI::buttonClicked(juce::Button* button)
 }
 
 
-
+void PlayerGUI::timerCallback()
+{
+    if (playerAudio.getLength() > 0)
+        progressSlider.setValue(playerAudio.getPosition() / playerAudio.getLength());
+}
 
 void PlayerGUI::paint(juce::Graphics& g)
 {
