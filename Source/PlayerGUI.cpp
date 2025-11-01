@@ -12,7 +12,7 @@
 
 PlayerGUI::PlayerGUI()
 {
-    for (auto* btn : { &loadButton, &restartButton, &stopButton, &playButton ,&loopButton,&muteButton,&unmuteButton, &forwardButton , &backwardButton })
+    for (auto* btn : { &loadButton, &restartButton, &stopButton, &playButton ,&loopButton,&muteButton,&unmuteButton, &forwardButton , &backwardButton,&setAButton,&setBButton,&loopABButton })
     {
         addAndMakeVisible(btn); 
         btn->addListener(this);
@@ -57,18 +57,18 @@ void PlayerGUI::sliderValueChanged(juce::Slider* slider)
 void PlayerGUI::resized()
 {
      int margin = 20;
- int buttonHeight = 40;
+ int buttonHeight = 30;
  int labelHeight = static_cast<int>(4 * (metadataLabel.getFont().getHeight() + 10));
  int buttonSpace = 10;
- int rowButtons = 5;
- int numButtons = 9; 
- int buttonWidth = 80;
+ int rowButtons = 7;
+ int numButtons = 12; 
+ int buttonWidth = 70;
  
 
 int y = 10 + labelHeight;
 int x = margin;
 
-juce::Component* buttons[] = {&loadButton,&restartButton,&stopButton,&playButton,&loopButton,&muteButton,&unmuteButton,&forwardButton , &backwardButton};
+juce::Component* buttons[] = {&loadButton,&restartButton,&stopButton,&playButton,&loopButton,&muteButton,&unmuteButton,&forwardButton , &backwardButton ,&setAButton,&setBButton,&loopABButton};
 
 
 for (int i = 0; i < numButtons; i++)
