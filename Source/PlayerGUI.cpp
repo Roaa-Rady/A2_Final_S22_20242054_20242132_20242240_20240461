@@ -25,7 +25,6 @@ PlayerGUI::PlayerGUI()
     progressSlider.setRange(0.0, 1.0);  
     progressSlider.setSliderStyle(juce::Slider::LinearHorizontal); 
     progressSlider.setTextBoxStyle(juce::Slider::NoTextBox, false, 0, 0); 
-    progressSlider.setEnabled(false); 
     addAndMakeVisible(progressSlider);
     progressSlider.addListener(this); 
     addAndMakeVisible(timeLabel);
@@ -52,6 +51,7 @@ void PlayerGUI::prepareToPlay(int samplesPerBlockExpected, double sampleRate)
 void PlayerGUI::getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferToFill)
 {
     playerAudio.getNextAudioBlock(bufferToFill);
+  
 }
 
 void PlayerGUI::releaseResources()
