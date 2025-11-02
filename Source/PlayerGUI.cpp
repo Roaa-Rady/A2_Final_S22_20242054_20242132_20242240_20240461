@@ -120,6 +120,8 @@ int totalRows = (numButtons + rowButtons - 1) / rowButtons;
 int nextY = y + totalRows * (buttonHeight + 20);
 volumeSlider.setBounds(margin, nextY, getWidth() - 2 * margin, 30);
 progressSlider.setBounds(margin, nextY + 40, getWidth() - 2 * margin, 20);
+speedSlider.setBounds(margin, nextY + 60, getWidth() - 2 * margin, 20);
+speedLabel.setBounds(margin, nextY +70, getWidth() - 2 * margin, 20);
 timeLabel.setBounds(margin, nextY +50, getWidth() - 2 * margin, 20);
 metadataLabel.setBounds(margin, 10, getWidth() - 2 * margin, labelHeight);
 }
