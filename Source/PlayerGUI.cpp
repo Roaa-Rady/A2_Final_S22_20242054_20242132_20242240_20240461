@@ -124,6 +124,11 @@ speedSlider.setBounds(margin, nextY + 60, getWidth() - 2 * margin, 20);
 speedLabel.setBounds(margin, nextY +70, getWidth() - 2 * margin, 20);
 timeLabel.setBounds(margin, nextY +50, getWidth() - 2 * margin, 20);
 metadataLabel.setBounds(margin, 10, getWidth() - 2 * margin, labelHeight);
+int speedLabelY = nextY + 70;  
+int speedSliderY = speedLabelY + 30;
+speedLabel.setBounds(margin, speedLabelY, getWidth() - 2 * margin, 35);  
+speedSlider.setBounds(margin, speedSliderY, getWidth() - 2 * margin, 45); 
+ 
 }
 
 void PlayerGUI::buttonClicked(juce::Button* button)
