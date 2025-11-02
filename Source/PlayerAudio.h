@@ -30,6 +30,8 @@ public:
     void enableSegmentLoop(bool shouldLoop);
     bool getSegmentLooping() const { return isSegmentLooping; }
     void checkSegmentLoop();
+    void setPlaybackRate(float rate); 
+    float getPlaybackRate() const; 
 private:
     juce::AudioFormatManager formatManager;
     std::unique_ptr<juce::AudioFormatReaderSource> readerSource;
@@ -37,6 +39,7 @@ private:
     bool islooping = false;
     float previousGain = 0.5f;
     bool isMuted = false;
+    float playbackRate = 1.0f;
     double pointA = -1.0;
     double pointB = -1.0;
     bool isSegmentLooping = false;
