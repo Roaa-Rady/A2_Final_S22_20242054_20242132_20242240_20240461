@@ -108,6 +108,41 @@ void PlayerAudio::unmute()
     } 
 }
 
+void PlayerAudio::setPlaybackRate(float rate)
+{
+    if (rate <= 0.0f || rate > 3.0f) return;
+
+    if (!readerSource) return;
+
+    auto* reader = readerSource->getAudioFormatReader();
+    if (!reader) return;
+
+    
+    bool wasPlaying = transportSource.isPlaying();
+    double currentPos = transportSource.getCurrentPosition();
+
+    
+    transportSource.stop();
+    transportSource.setSource(nullptr);
+
+    double newSampleRate = reader->sampleRate * rate;
+    transportSource.setSource(readerSource.get(), 0, nullptr, newSampleRate);
+
+    
+    if (wasPlaying)
+    {
+        transportSource.setPosition(currentPos);
+        transportSource.start();
+    }
+
+    playbackRate = rate;
+}
+
+float PlayerAudio::getPlaybackRate() const 
+{
+    return playbackRate;
+}
+
 
 void PlayerAudio::setLooping(bool shouldLoop)
 {
