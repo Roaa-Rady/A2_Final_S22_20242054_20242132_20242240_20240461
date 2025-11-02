@@ -25,13 +25,14 @@ public:
     void skipBackward(double seconds);
     void mute();
     void unmute();
+    void setPlaybackRate(float rate); 
+    float getPlaybackRate() const; 
     void setLoopPointA(double position);
     void setLoopPointB(double position);
     void enableSegmentLoop(bool shouldLoop);
     bool getSegmentLooping() const { return isSegmentLooping; }
     void checkSegmentLoop();
-    void setPlaybackRate(float rate); 
-    float getPlaybackRate() const; 
+    
 private:
     juce::AudioFormatManager formatManager;
     std::unique_ptr<juce::AudioFormatReaderSource> readerSource;
