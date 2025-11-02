@@ -37,6 +37,8 @@ private:
     juce::TextButton loopButton{ "Loop" };
     juce::TextButton muteButton{ "Mute" };
     juce::TextButton unmuteButton{ "Unmute" };
+    juce::Slider speedSlider; 
+    juce::Label speedLabel; 
     juce::Label metadataLabel;
     juce::Slider volumeSlider;
     juce::Slider progressSlider;
