@@ -22,6 +22,15 @@ PlayerGUI::PlayerGUI()
     volumeSlider.setValue(0.5);
     volumeSlider.addListener(this);
     addAndMakeVisible(volumeSlider);
+    speedSlider.setRange(0.5, 2.0, 0.01); 
+    speedSlider.setValue(1.0); 
+    speedSlider.setTextBoxStyle(juce::Slider::TextBoxBelow, false, 50, 20); 
+    speedSlider.setTextValueSuffix("x"); 
+    speedSlider.addListener(this); 
+    addAndMakeVisible(speedSlider);
+    speedLabel.setText("Speed", juce::dontSendNotification); 
+    speedLabel.setJustificationType(juce::Justification::centred); 
+    addAndMakeVisible(speedLabel); 
     progressSlider.setRange(0.0, 1.0);  
     progressSlider.setSliderStyle(juce::Slider::LinearHorizontal); 
     progressSlider.setTextBoxStyle(juce::Slider::NoTextBox, false, 0, 0); 
@@ -72,6 +81,10 @@ void PlayerGUI::sliderValueChanged(juce::Slider* slider)
         double newPos =progressSlider.getValue() * length;
         playerAudio.setPosition(newPos);
     }
+}
+  else if (slider == &speedSlider) 
+{
+    playerAudio.setPlaybackRate((float)slider->getValue());
 }
 }
 
