@@ -12,12 +12,19 @@ With an intuitive interface and real-time mixing capabilities, it bridges the ga
 🚀 Features
 
 🎶 Play, pause, stop, and restart audio files.
+
 🔁 Loop and A–B Loop playback.
+
 ⏩ Skip forward and backward.
+
 🔇 Mute and unmute audio.
+
 🎚️ Adjustable volume control.
+
 🎛️ Mix two different audio tracks and control each track’s volume independently.
+
 📂 Load audio files directly from the GUI.
+
 
 
 🛠️ Built With
