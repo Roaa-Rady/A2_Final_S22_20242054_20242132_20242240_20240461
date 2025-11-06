@@ -18,9 +18,9 @@ public:
 
 private:
     std::unique_ptr<PlayerGUI> player1;
-    std::unique_ptr<PlayerGUI> player2; 
-     juce::MixerAudioSource mixer;
-
+    std::unique_ptr<PlayerGUI> player2;
+    juce::MixerAudioSource mixer;
+    
     std::unique_ptr<juce::FileChooser> fileChooser;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(MainComponent)
