@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+  <rect x="0" y="0" width="128" height="128" fill="none"/>
+  <rect x="8" y="8" width="112" height="112" rx="16" ry="16" fill="#e67e22" />
+  <g fill="white" stroke="none" transform="translate(0,0)">
+    <text x='36' y='84' font-size='48' font-family='Arial' font-weight='700'>A</text><text x='72' y='84' font-size='48' font-family='Arial' font-weight='700'>B</text>
+  </g>
+</svg>

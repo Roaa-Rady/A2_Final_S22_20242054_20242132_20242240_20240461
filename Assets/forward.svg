@@ -1,0 +1,26 @@
+<!-- Forward 10 seconds icon with stylish colors -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200" aria-label="Forward 10 seconds icon" role="img">
+  <defs>
+    <!-- خلفية بتدرّج برتقالي -->
+    <linearGradient id="forwardGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffb347"></stop>
+      <stop offset="1" stop-color="#ff7b00"></stop>
+    </linearGradient>
+
+    <!-- ظل بسيط -->
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#000" flood-opacity="0.15"></feDropShadow>
+    </filter>
+  </defs>
+
+  <!-- الخلفية الدائرية -->
+  <circle cx="100" cy="100" r="88" fill="url(#forwardGrad)" filter="url(#shadow)"></circle>
+
+  <!-- السهم -->
+  <path d="M90 60 L130 100 L90 140" fill="none" stroke="#ffffff" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"></path>
+
+  <!-- النص "10" -->
+  <text x="65" y="110" text-anchor="middle" font-family="Poppins, Arial, sans-serif" font-weight="700" font-size="36" fill="#ffffff">
+    10
+  </text>
+</svg>
