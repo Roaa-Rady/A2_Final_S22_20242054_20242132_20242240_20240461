@@ -19,6 +19,16 @@ void PlayerAudio::getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferTo
 {
     transportSource.getNextAudioBlock(bufferToFill);
     checkSegmentLoop();
+    // Apply panning (left/right balance)
+    if (bufferToFill.buffer->getNumChannels() > 1)
+    {
+        float leftGain = 1.0f - static_cast<float>(pan);
+        float rightGain = static_cast<float>(pan);
+
+        bufferToFill.buffer->applyGain(0, bufferToFill.startSample, bufferToFill.numSamples, leftGain);
+        bufferToFill.buffer->applyGain(1, bufferToFill.startSample, bufferToFill.numSamples, rightGain);
+    }
+
 }
 
 void PlayerAudio::releaseResources()
@@ -49,8 +59,19 @@ void PlayerAudio::play() { transportSource.start(); }
 
 void PlayerAudio::stop()
 {
+    float currentGain = transportSource.getGain();
+    const int fadeSteps = 20;
+    const float decrement = currentGain / fadeSteps;
+
+    for (int i = 0; i < fadeSteps; ++i)
+    {
+        transportSource.setGain(currentGain - decrement * i);
+        juce::Thread::sleep(150);
+    }
+
     transportSource.stop();
-    
+    transportSource.setGain(currentGain);
+
 }
 
 void PlayerAudio::Restart() {
@@ -96,8 +117,12 @@ void PlayerAudio::mute()
         transportSource.setGain(0.0f);
         isMuted = true;
     }
-    
-  
+
+
+}
+void PlayerAudio::goToEnd()
+{
+    transportSource.setPosition(transportSource.getLengthInSeconds());
 }
 void PlayerAudio::unmute()
 {
@@ -105,7 +130,7 @@ void PlayerAudio::unmute()
     {
         transportSource.setGain(previousGain);
         isMuted = false;
-    } 
+    }
 }
 
 void PlayerAudio::setPlaybackRate(float rate)
@@ -117,18 +142,18 @@ void PlayerAudio::setPlaybackRate(float rate)
     auto* reader = readerSource->getAudioFormatReader();
     if (!reader) return;
 
-    
+
     bool wasPlaying = transportSource.isPlaying();
     double currentPos = transportSource.getCurrentPosition();
 
-    
+
     transportSource.stop();
     transportSource.setSource(nullptr);
 
     double newSampleRate = reader->sampleRate * rate;
     transportSource.setSource(readerSource.get(), 0, nullptr, newSampleRate);
 
-    
+
     if (wasPlaying)
     {
         transportSource.setPosition(currentPos);
@@ -138,7 +163,7 @@ void PlayerAudio::setPlaybackRate(float rate)
     playbackRate = rate;
 }
 
-float PlayerAudio::getPlaybackRate() const 
+float PlayerAudio::getPlaybackRate() const
 {
     return playbackRate;
 }
@@ -149,7 +174,7 @@ void PlayerAudio::setLooping(bool shouldLoop)
     islooping = shouldLoop;
     if (readerSource != nullptr)
     {
-        readerSource->setLooping(shouldLoop);   
+        readerSource->setLooping(shouldLoop);
     }
 }
 
@@ -184,5 +209,13 @@ void PlayerAudio::checkSegmentLoop()
         }
     }
 }
+
+bool PlayerAudio::isPlaying() const
+{
+    return transportSource.isPlaying();
+}
+
+
+
 
 
