@@ -603,7 +603,7 @@ void PlayerGUI::paint(juce::Graphics& g)
     g.fillAll(juce::Colour::fromRGB(50, 50, 50));  // رمادي غامق ناعم مش أسود تمامًا
     g.setColour(juce::Colours::white);
     g.setFont(juce::Font(18.0f, juce::Font::bold));
-    g.drawText("Audio Player", getLocalBounds().removeFromTop(30), juce::Justification::centred);
+    g.drawText("Melody Mix", getLocalBounds().removeFromTop(30), juce::Justification::centred);
 }
 
 
@@ -748,6 +748,7 @@ void PlayerGUI::loadLastSession()
         }
     }
 }
+
 
 
 
