@@ -8,28 +8,26 @@ With an intuitive interface and real-time mixing capabilities, it bridges the ga
 
 🚀 Features
 
-🎶 Play, pause, stop, and restart audio files.
+  🎶 Play, pause, stop, and restart audio files.
 
-🔁 Loop and A–B Loop playback.
+  🔁 Loop and A–B Loop playback.
 
-⏩ Skip forward and backward.
+  ⏩ Skip forward and backward.
 
-🔇 Mute and unmute audio.
+  🔇 Mute and unmute audio.
 
-🎚️ Adjustable volume control.
+  🎚️ Adjustable volume control.
 
-🎛️ Mix two different audio tracks and control each track’s volume independently.
+  🎛️ Mix two different audio tracks and control each track’s volume independently.
 
-📂 Load audio files directly from the GUI.
-
-
+  📂 Load audio files directly from the GUI.
 
 
 🛠️ Built With
 
-💻 Language: C++
+  💻 Language: C++
 
-🎛️ Framework: JUCE
+  🎛️ Framework: JUCE
 
-🧰 IDE: Visual Studio
+  🧰 IDE: Visual Studio
 
